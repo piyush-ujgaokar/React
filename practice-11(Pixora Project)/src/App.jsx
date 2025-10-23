@@ -10,7 +10,7 @@ import Card from './components/ImgCard'
 const App = () => {
 
   const [userData, setUserdata] = useState([])
-  const [index, setIndex] = useState(1)
+  const [index, setIndex] = useState(2)
 
   const getData=async ()=>{
     const {data}= await axios.get(`https://picsum.photos/v2/list?page=${index}&limit=8`)
@@ -40,7 +40,7 @@ if(userData.length>0){
           </div>
           <div className='flex relative justify-center items-center gap-5 mt-10'>
             <button 
-            style={{opacity: index == 1?0.5:1}}
+            style={{opacity: index-1 == 1?0.5:1}}
             onClick={()=>{
                 if(index>1){
                   setUserdata([])
@@ -50,7 +50,7 @@ if(userData.length>0){
               className='text-3xl px-7 tracking-wider font-semibold cursor-pointer py-2 rounded-2xl bg-amber-500 text-black '>
               Prev
             </button>
-            <h1 className='text-4xl font-medium'>Page {index}</h1>
+            <h1 className='text-4xl font-medium'>Page {index-1}</h1>
             <button 
              onClick={()=>{
               setUserdata([])
